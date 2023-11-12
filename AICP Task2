@@ -1,0 +1,91 @@
+# Constants
+NUM_COACHES = 6
+SEATS_PER_COACH = 80
+TICKET_PRICE = 25.00
+
+# Data structures to store information
+available_tickets = {
+    '09:00': NUM_COACHES * SEATS_PER_COACH,
+    '11:00': NUM_COACHES * SEATS_PER_COACH,
+    '13:00': NUM_COACHES * SEATS_PER_COACH,
+    '15:00': NUM_COACHES * SEATS_PER_COACH,
+    '10:00': NUM_COACHES * SEATS_PER_COACH + 2,  # Extra coaches on the last train
+    '12:00': NUM_COACHES * SEATS_PER_COACH + 2,
+    '14:00': NUM_COACHES * SEATS_PER_COACH + 2,
+    '16:00': NUM_COACHES * SEATS_PER_COACH + 2
+}
+
+total_passengers = {key: 0 for key in available_tickets.keys()}
+total_money_collected = {key: 0.00 for key in available_tickets.keys()}
+
+# Function to display the current status of available tickets
+def display_tickets():
+    print('\nAvailable Tickets:')
+    for time, tickets in available_tickets.items():
+        if tickets == 0:
+            print(f'{time}: Closed')
+        else:
+            print(f'{time}: {tickets} tickets available')
+
+# Function to purchase tickets
+def purchase_tickets():
+    time = input('Enter the departure time (e.g., 09:00): ')
+    num_tickets = int(input('Enter the number of tickets to purchase: '))
+
+    if time not in available_tickets:
+        print('Invalid time. Please enter a valid departure time.')
+        return
+
+    if num_tickets > available_tickets[time]:
+        print('Insufficient tickets available. Please choose a smaller quantity.')
+        return
+
+    group_discount = num_tickets // 10 * TICKET_PRICE
+    total_price = num_tickets * TICKET_PRICE - group_discount
+
+    # Update data structures
+    available_tickets[time] -= num_tickets
+    total_passengers[time] += num_tickets
+    total_money_collected[time] += total_price
+
+    print(f'\nTickets purchased successfully for {num_tickets} passengers at {time}.')
+    print(f'Total Price: ${total_price:.2f}')
+
+# Task 1 - Start of the day
+def task1():
+    print('Start of the Day Setup:')
+    display_tickets()
+
+# Task 2 - Purchasing tickets
+def task2():
+    print('\nPurchasing Tickets:')
+    display_tickets()
+    purchase_tickets()
+
+# Task 3 - End of the day
+def task3():
+    print('\nEnd of the Day Summary:')
+    display_tickets()
+
+    # Display the number of passengers and total money collected for each train journey
+    for time in total_passengers:
+        print(f'\n{time}:')
+        print(f'Number of Passengers: {total_passengers[time]}')
+        print(f'Total Money Collected: ${total_money_collected[time]:.2f}')
+
+    # Calculate and display the total number of passengers and total amount of money taken for the day
+    total_passengers_day = sum(total_passengers.values())
+    total_money_collected_day = sum(total_money_collected.values())
+
+    print('\nOverall Summary:')
+    print(f'Total Passengers for the Day: {total_passengers_day}')
+    print(f'Total Money Collected for the Day: ${total_money_collected_day:.2f}')
+
+    # Find and display the train journey with the most passengers that day
+    max_passengers_time = max(total_passengers, key=total_passengers.get)
+    print(f'\nTrain Journey with the Most Passengers: {max_passengers_time} ({total_passengers[max_passengers_time]} passengers)')
+
+# Test the tasks
+task1()
+task2()
+task3()
