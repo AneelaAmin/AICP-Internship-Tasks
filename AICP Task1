@@ -1,0 +1,47 @@
+#Task1
+# Constants for item details
+case_items = {'A1': ('Compact', 75.00), 'A2': ('Tower', 150.00)}
+ram_items = {'B1': ('8 GB', 79.99), 'B2': ('16 GB', 149.99), 'B3': ('32 GB', 299.99)}
+main_hdd_items = {'C1': ('1 TB HDD', 49.99), 'C2': ('2 TB HDD', 89.99), 'C3': ('4 TB HDD', 129.99)}
+
+a=input(f"Enter basic items from {case_items}:")
+b=input(f"Enter basic items from {ram_items}:")
+c=input(f"Enter basic items from {main_hdd_items}:")
+Basic_price=print(f"Basic items choosed:{case_items[a]},{ram_items[b]},{main_hdd_items[c]}","Price:",case_items[a][1]+ram_items[b][1]+main_hdd_items[c][1])
+print(Basic_price)
+BBasic_Price=case_items[a][1]+ram_items[b][1]+main_hdd_items[c][1]
+print("Basic Price",BBasic_Price)
+
+
+#Task2
+Solid_State_Drive= {'D1': ('240 GB SSD', 59.99), 'D2': ('480 GB SSD', 119.99)}
+Second_Hard_Disk_Drive= {'E1': ('1 TB HDD', 49.99), 'E2': ('2 TB HDD', 89.99), 'E3': ('4 TB HDD', 129.99)}
+Optical_Drive = {'F1': ('DVD/Blu-Ray Player', 50.00), 'F2': ('DVD/Blu-Ray Re-writer', 100.00)}
+Operating_System= {'G1': ('Standard Version', 100.00), 'G2': ('Professional Version', 175.00)}
+d=input("if you want to purchase additional items Enter 'Yes' else 'No':")
+Additional_items=0
+if d.lower()=='no':
+    print(Basic_price)
+elif d.lower()=='yes':
+    e=input(f"Enter Additional items from {Solid_State_Drive}:")
+    f=input(f"Enter Additional items from {Second_Hard_Disk_Drive}:")
+    g=input(f"Enter Additional items from {Optical_Drive}: ")
+    h=input(f"Enter Additional items from {Operating_System}:")
+    Additional_price=print(f"Additional items choosed:{Solid_State_Drive[e]},{Second_Hard_Disk_Drive[f]},{Optical_Drive[g]},{Operating_System[h]}","Price:",Solid_State_Drive[e][1]+Second_Hard_Disk_Drive[f][1]+Optical_Drive[g][1]+Operating_System[h][1])
+    print(Additional_price)
+    Additional_PPrice=Solid_State_Drive[e][1]+Second_Hard_Disk_Drive[f][1]+Optical_Drive[g][1]+Operating_System[h][1]
+    Additional_items+=1
+else:
+    print(f'Wrong entry:{d}')
+#Task3 Applying Discount
+if Additional_items==1:
+    Total_Price=(BBasic_Price+Additional_PPrice*(1-0.05))
+    print("Total Price:",Total_Price)
+    print("Amount before Discount:",BBasic_Price+Additional_PPrice, "After Discount:",Total_Price)
+    print("Amount saved:",(BBasic_Price+Additional_PPrice)-Total_Price)
+else:
+    Total_Price=(BBasic_Price+Additional_PPrice*(1-0.20))
+    print("Total price:",Total_Price)
+    print("Money saved:",)      
+    print("Amount before Discount:",BBasic_Price+Additional_PPrice,"After Discount:",Total_Price)
+    print("Amount saved:",(BBasic_Price+Additional_PPrice)-Total_Price)
