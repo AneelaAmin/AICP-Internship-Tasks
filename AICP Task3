@@ -1,0 +1,35 @@
+ID=input("Enter your student_ID:")
+print(ID)
+
+#Source_Data
+Source_data=[[55,65,75],[120,150,170],[210,230,240]]
+
+#function for slab1()
+def slab1():
+    Source_data[0]=[a*10 for a in Source_data[0]]
+    print(Source_data[0])
+
+#function for slab2()
+def slab2():
+    Source_data[1]=[a*15 for a in Source_data[1]]
+    print(Source_data[1])
+
+#function for slab3()
+def slab3():
+    Source_data[2]=[a*20 for a in Source_data[2]]
+    print(Source_data[2])
+
+#User choice
+print("Enter 1 to display slab1 and slab2")
+print("Enter 2 to display slab3")
+print("Enter any other key to exit")
+choice=int(input("Enter your choice:"))
+
+#Checking Condition
+if choice==1:
+    slab1()
+    slab2()
+elif choice==2:
+    slab3()
+else:
+    print("Break")
