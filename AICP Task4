@@ -1,0 +1,36 @@
+a=input("Enter your CNIC or std_ID:")
+s=int(str(a)[-1])
+def calcArea():
+    Area=1.5*1.732*s
+    print("Area of Hexagon:",Area)
+def calcPeri():
+    Perimeter=6*s
+    print("Perimeter of Hexagon:",Perimeter)
+def calcAngleSum():
+    angle=120
+    Sum=6*angle
+    print("Sum of all angles of Hexagon:",Sum)
+def display():
+    calcArea()
+    calcPeri()
+    calcAngleSum()
+ss=int(str(a)[-1])+1  #increamenting for square part
+def calcAreaSquare():
+    SArea=ss**2
+    print("Area of Square:",SArea)
+def calcPeriSquare():
+    SPerimeter=4*ss
+    print("Perimeter of Square:",SPerimeter)
+def Sdisplay():
+    calcAreaSquare()
+    calcPeriSquare()
+print("Enter 1 to display Hexagon solution")
+print("Enter 2 to display Square solution")
+print("Enter any other character to exit")
+c=input("Enter your Input:")
+if c=='1':
+    display()
+elif c=='2':
+    Sdisplay()
+else:
+    print("Exit!")
