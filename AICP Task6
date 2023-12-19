@@ -1,0 +1,79 @@
+#Task1
+RG = 0
+RC = 0
+RD = 0
+
+def calculate(material,weight):
+    global RG,RC,RD
+    if material not in ['G','C','S']:
+        print(f'{material} rejected not in list')
+        RG=RG+1
+    elif material in ['G','S'] and not (49.9<weight<50.1):
+        print(f'Rejected weight for {material} is {weight} rejected')
+        RC+=1
+    elif material=='C' and not (24.9<weight<25.1):
+        print(f'Rejected weight for {material} is {weight} rejected')
+        RD+=1
+    else:
+        print(f'Accepted {material} weight is {weight}kg')
+
+A=str(input("Enter the material in{G,S,C}:"))
+B=int(input("Enter the weight for the material:"))
+calculate(A,B)
+
+#Task2
+C=int(input("Enter the number of gravel sacks you wanna buy:"))
+D=int(input("Enter the number of cement sacks you wanna buy:"))
+E=int(input("Enter the number of sand sacks you wanna buy:"))
+
+for m in range(C):
+    TC_weight=0
+    count_C=0
+    a='G'
+    b=float(input(f"Enter weight for sack {m} of Gravel:"))
+    calculate(a,b)
+    TC_weight=TC_weight+b
+    count_C=count_C+1
+    m+=1
+
+for n in  range(D):
+    TD_weight=0
+    count_D=0
+    c='C'
+    d=float(input(f"Enter weight for sack {n} of Cement:"))
+    calculate(c,d)
+    TD_weight=TD_weight+d
+    count_D=count_D+1
+    n+=1
+
+for o in range(E):
+    TE_weight=0
+    count_E=0
+    e='S'
+    f=float(input(f"Enter weight for sack {o} of Sand:"))
+    calculate(e,f)
+    TE_weight=TE_weight+f
+    count_E=count_E+1
+    o+=1
+
+print(f"Total weight of Gravel sacks:{TC_weight}")
+print(f"Total weight of Cement sacks:{TD_weight}")
+print(f"Total weight of Sand sacks:{TE_weight}")
+
+print(f"Rejected Orders are: {RG+RC+RD}")
+
+#Task3
+print(f"Price of Gravel={C*3}$")
+print(f"Price of Cement={D*2}$")
+print(f"Price of Sand={E*2}$")
+print(f"Total Original Price:{(C*3)+(D*2)+(E*2)}")
+
+if C&E>=2 and D>=1:
+    print(f"Discount price={(C*3)+(D*2)+(E*2)*10/100}")
+
+
+
+
+
+
+
