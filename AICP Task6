@@ -17,6 +17,7 @@ def calculate(material,weight):
     else:
         print(f'Accepted {material} weight is {weight}kg')
 
+
 A=str(input("Enter the material in{G,S,C}:"))
 B=int(input("Enter the weight for the material:"))
 calculate(A,B)
@@ -26,33 +27,35 @@ C=int(input("Enter the number of gravel sacks you wanna buy:"))
 D=int(input("Enter the number of cement sacks you wanna buy:"))
 E=int(input("Enter the number of sand sacks you wanna buy:"))
 
+count_C = 0
+count_D = 0
+count_E = 0
+
+TC_weight = 0
+TD_weight = 0
+TE_weight = 0
+
 for m in range(C):
-    TC_weight=0
-    count_C=0
     a='G'
     b=float(input(f"Enter weight for sack {m} of Gravel:"))
     calculate(a,b)
-    TC_weight=TC_weight+b
+    TC_weight+=b
     count_C=count_C+1
     m+=1
 
 for n in  range(D):
-    TD_weight=0
-    count_D=0
     c='C'
     d=float(input(f"Enter weight for sack {n} of Cement:"))
     calculate(c,d)
-    TD_weight=TD_weight+d
+    TD_weight+=d
     count_D=count_D+1
     n+=1
 
 for o in range(E):
-    TE_weight=0
-    count_E=0
     e='S'
     f=float(input(f"Enter weight for sack {o} of Sand:"))
     calculate(e,f)
-    TE_weight=TE_weight+f
+    TE_weight+=f
     count_E=count_E+1
     o+=1
 
