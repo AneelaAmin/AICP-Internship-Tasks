@@ -1,0 +1,46 @@
+charity_names=['charity_A','charity_B','charity_C']
+charity_Totals=[0,0,0]
+
+for i,charity_name in enumerate(charity_names,start=1):
+    print(f"Charity number {i} is {charity_name}: ")
+
+charity_num=int(input("Enter the charity number in (1,2 or 3):"))
+
+def charity(charity_num):
+    if 1<= charity_num <=3:
+        pay_bill = float(input("Enter you'r paybill amount:"))
+        donation_percentage = 0.01
+        Charity_Amount = donation_percentage * pay_bill
+        charity_Totals[charity_num-1]+=Charity_Amount
+        print(f"Amount of ${Charity_Amount:2f} donated to ${charity_names[charity_num]}")
+
+    else:
+        print(f"You've entered wrong choice {charity_num}!!!")
+
+while True:
+    charity_num=int(input("Enter choice for charity in (1,2,3) or -1 to display total:"))
+
+    if charity_num==-1:
+        sorted_charity_Totals=sorted(zip(charity_names,charity_Totals),key=lambda x: x[1], reverse=True)
+        print("Charity Totals:")
+        for charity,total in sorted_charity_Totals:
+            print(f"{charity},${total:2f}")
+        grand_total=sum(charity_Totals)
+        print(f"'GRAND TOTAL DONATED TO CHARITY':${grand_total:2f}")
+        break
+    elif(1<=charity_num<=3):
+        if 1 <= charity_num <= 3:
+            pay_bill = float(input("Enter you'r paybill amount:"))
+            donation_percentage = 0.01
+            Charity_Amount = donation_percentage * pay_bill
+            charity_Totals[charity_num - 1] += Charity_Amount
+            print(f"Amount of ${Charity_Amount:2f} donated to ${charity_names[charity_num - 1]}")
+
+        else:
+            print(f"You've entered wrong choice {charity_num}!!!")
+
+
+
+
+
+
